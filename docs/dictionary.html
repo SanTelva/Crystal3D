@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — Словарик</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>Словарик</h2>
+                    <p>
+                        Мы тут иногда пользуемся всякими непонятными и необщепринятыми словами. На этой странице примерно написано что это вообще такое. Кроме того, именно здесь записано то важное обстоятельство, что отсчёт координат у нас идёт «сверху»-«слева» вдоль границ элементарной ячейки. <!-- чтобы понять рекурсию, надо понять рекурсию --><br>
+                        <b>Нода</b> — узел (вершина) кристалла.<br>
+                        <b>Бонд</b> или <b>бонда</b> — ребро, связь в кристалле.<br>
+                        <b>Шифт</b> или <b>смещение</b> — в какой элементарной ячейке искать ноду, в которую идёт бонд. Дело в том, что несмотря на то, что рёбра сами по себе направленными быть никак не могут, у нас в программе в любом внутреннем представлении они направленными являются (хотя их направление можно легко изменить. Тогда надо изменять знак и у всех шифтов). И чтобы понять, в какой элементарной ячейке находится конечная точка относительно начальной точки, используются шифты. Скажем, на первой картинке (красным показаны границы элементарной ячейки) первое ребро идёт слева направо и имеет <tt>shiftX=1</tt>, а на второй картинке первое ребро идёт сверху вниз, имея <tt>shiftY=1</tt>, а третье ребро идёт полностью в одной элементарной ячейке, и имеет оба смещения равными нулю. А если изменить направление второго ребра на второй картинке, то его смещение будет равно (-1, 0).<br><br>
+                        <img src="screen.png">
+                        <!--<br clear="both">-->
+                        <img src="screen2.png">
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

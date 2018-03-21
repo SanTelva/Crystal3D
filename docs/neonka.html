@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — А что внутре?</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре?</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>А что внутре?</h2>
+                    <p>
+                        Внутри архива с программой содержится:
+                        <ul>
+                            <li>Библиотека draw2 с кучей модулей (см. в меню слева (оно слева)).</li>
+                            <li>Два «главных» файла — для 3D и для 2D. Называются, соответственно, <tt>main3d.py</tt> и <tt>main2d.py</tt>.</li>
+                            <li>Директории samples и samples3d с готовыми кристаллическими решётками в формате NBO.</li>
+                            <li> Директория Tools с полезными утилитами. Их список:
+                                <ol>
+                                    <li><tt>migrate2d.py</tt> и <tt>migrate3d.py</tt>, конвертирующие файлы IGOR в файлы NBO — для 2D и 3D файлов соответственно.</li>
+                                    <li><tt>2Dto3D.py</tt>, создающую призму по двумерной решётке.
+                                    <li><tt>genbonds.py</tt>, создающий бонды по нодам в трёхмерной решётке, где соединяются только ближайшие соседи. Работает ли она — неизвестно. Но вроде работает.</li>
+                                    <li><tt>_legacy/IGto3D.py</tt> — старая утилита для получения призмы. Работает только с форматом IGOR и вообще неправильно.</li>
+                                </ol>
+                            </li>
+                            <li>Директория <tt>docs</tt>, как вы уже знаете, содержит эту документацию. <!-- We need to go META! --> </li>
+                        </ul>
+                    </p>
+                    <h2>Я случайно сто тысяч новых файлов, что делать?</h2>
+                    <p>
+                        Без паники. Для начала стоит решить — не следует ли поместить что-нибудь из этих файлов в уже существующие и проделать соответствующие действия. Если файлы на этом не кончились, продолжаем.<br>
+                        <ul>
+                            <li>Отдельную <b>утилиту</b> надо положить в директорию Tools. Если она ищет библиотеку draw2 рядом с собой, то следует добавить в начало две строчки:
+<pre><code class="python">import sys
+sys.path.append('..')
+</code></pre></li>
+                            <li>Новую <b>функцию</b> следует расположить в самой библиотеке draw2. Там <tt>import</tt>'ов заменять не надо.</li>
+                        </ul>
+                        Если после ваших изменений какая-то функция оказалась устаревшей, и вообще ваша работает лучше и быстрее на 146%, так что вы хотите, чтобы теперь всё работало с ней — начинайте портирование кода. После того, как весь код будет уметь работать с вашей функцией — смело перемещайте старую в модуль <tt>_legacy</tt>. Если при этом появился ещё один формат файлов, то <s>подумайте дважды, форматов файлов у нас и так хватает</s> не забудьте написать утилиту, конвертирующую старый формат в новый, и поступить с ней так, как написано выше.<br>
+                        После того, как вы закончили все изменения и распихали их по каталогам, убедитесь в том, что эта документация соответствует истине. Если нет — обновите документацию.<br>
+                        После того, как вы проделали всё вышенаписанное, можете отправить pull request'ы на git-репозитории <a href="https://github.com/Artom-Kozincev">@Artom-Kozincev</a> и/или <a href="https://github.com/SanTelva">@SanTelva</a>.
+                        Поздравляю и благодарю вас! Вы продвинули вперёд наш проект.
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

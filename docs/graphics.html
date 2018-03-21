@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — Модуль draw2.graphics</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>Модуль draw2.graphics</h2>
+                    <p>
+                        Огромный модуль, старый как мамонты и страшный как смертный грех. К сожалению, нам катастрофически не хватало времени, чтобы нормально его задокументировать, поэтому здесь приведены полные описания только новых функций. Краткие описания старых:<br>
+                        <tt>drawNodes()</tt> — 6 аргументов в 2D-версии, 10 в 3D. Отрисовывает на экране точки заданным цветом, и, для 3D-версии, с заданным поворотом.<br>
+                        <tt>drawBonds()</tt> — 6 аргументов в 2D-версии, 10 в 3D. Отрисовывает на экране линии заданным цветом, и, для 3D-версии, с заданным поворотом.<br>
+                        <tt>drawPCs()</tt> 6 аргументов в 2D-версии, 10 в 3D. Отрисовывает на экране границы элементарных ячеек заданным цветом, и, для 3D-версии, с заданным поворотом.<br>
+                        <tt>drawEverything()</tt> — 9 аргументов в 2D-версии, 14 (sic!) в 3D. Вызывает три предыдущих функции.<br>
+                        Оторвёмся от плохого. Новые функции:<br>
+                        <tt>reduce(x, y, z, matrix) -> x, y, z</tt> — принимает вектор, заданный тремя координатами и матрицу поворота. Возвращает повёрнутый вектор.<br>
+                        <tt>brightness(z, color) -> color</tt> — делает цвет светлее или темнее в зависимости от <tt>z</tt>. <tt>color</tt> является тремя числами от 0 до 255 — R, G и B компонентами цвета.
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

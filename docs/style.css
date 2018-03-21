@@ -1,0 +1,47 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+    background: #168729;
+}
+.container {
+	width: 100%;
+	height: 100%;
+}
+.left-column {
+    position: fixed;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	float: left;
+	height: 100%;
+	width: 15%;
+	border-right: 1px solid black;
+	background: #168761;
+}
+.right-column {
+	float: right;
+	height: 100%;
+	width: 85%;
+	background: #168729;
+}
+.content {
+	padding: 15px;
+}
+.menu li {
+	list-style-type: none;
+    margin-left: -2em;
+}
+.menuentry {
+	color: #000;
+}
+.menuentry.level2 {
+    margin-left: 1em;
+}
+h1.answer {
+	text-align: center;
+}
+pre {
+    font-family: monospace;
+}

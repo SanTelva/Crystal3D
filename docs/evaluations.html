@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — Модуль draw2.evaluations</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>Модуль draw2.evaluations</h2>
+                    <p>
+                        Нулевое, что следует знать об этом модуле — это один из самых старых модулей в программе. Многие вещи здесь такие, какие есть и с этим надо просто смириться. Ну или переписать.<br>
+                        Первое, что следует знать об этом модуле — в нём есть функции с суффиксами, т.е. кончающиеся на 2D или 3D. Если вы знаете, с каким типом данных работаете — с двумерным или трёхмерным — лучше используйте их. Если не знаете — вызовите функцию без суффикса и кидайте d20 на удачу. Список функций:<br>
+                        <tt>fracToAbsolute(xf, yf, angle, a, b) -> x, y</tt> — двумерная функция. Лучше вызывать с суффиксом 2D. Переводит долевые координаты в декартовы. <tt>xf</tt> и <tt>yf</tt> — долевые координаты. <tt>angle</tt> — угол элементарной ячейки, <tt>a</tt> и <tt>b</tt> — её стороны. Возвращает абсолютные координаты.<br>
+                        <tt>fracToAbsolute(xf, yf, zf, angleA, angleB, angleG, a, b, c) -> x, y, z</tt> — трёхмерная функция. Лучше вызывать с суффиксом 3D. Аналогично предыдущей, переводит долевые координаты в декартовы. <tt>xf</tt>, <tt>yf</tt> и <tt>zf</tt> — долевые координаты. <tt>angleA</tt>, <tt>angleB</tt> и <tt>angleG</tt> — углы элементарной ячейки, <tt>a</tt>, <tt>b</tt> и <tt>c</tt> — длины её рёбер. Возвращает абсолютные координаты.<br>
+                        <tt>getPoints(angle, a, b, primitiveCell, field_width, field_height) -> Nodes, Bonds, PCs</tt> — двумерная функция. Лучше вызывать с суффиксом 2D. По <tt>IGOR's primitiveCell</tt> генерирует списки точек, рёбер и элементарных ячеек по всему экрану. Используется, на данный момент, только для отрисовки, однако не перемещено в <tt>draw2.graphics</tt> по историческим причинам.<br>
+                        <tt>getPoints(angleA, angleB, angleG, primitiveCell, field_width, field) -> Nodes, Bonds, PCs</tt> — трёхмерная функция, лучше вызывать с суффиксом 3D. Работает аналогично предыдущей.<br>
+                        <tt>nodeDiary(node, nodes, bonds) -> None</tt> — выводит на экран информацию о точке, e.g. список её рёбер и их длины.<br>
+                        <tt>getCoveringLattice(primitiveCell) -> nodes, bonds</tt> — функция с идиотской архитектурой. Принимает <tt>IGOR's primitiveCell</tt>, однако внутри он преобразуется в NBO. Исторические причины. Возвращает покрывающую решётку к переданной (двумерной) в формате NBO.
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

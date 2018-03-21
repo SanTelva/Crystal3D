@@ -1,0 +1,127 @@
+{
+    "geometry": {
+        "angle": 60,
+        "sideA": 200.0,
+        "sideB": 200.0
+    },
+    "topology": {
+        "bonds": [
+            {
+                "node1": 1,
+                "node2": 2,
+                "num": 1,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 1,
+                "node2": 3,
+                "num": 2,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 2,
+                "node2": 3,
+                "num": 3,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 2,
+                "node2": 4,
+                "num": 4,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 3,
+                "node2": 5,
+                "num": 5,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 3,
+                "node2": 6,
+                "num": 6,
+                "shiftX": 0,
+                "shiftY": -1
+            },
+            {
+                "node1": 1,
+                "node2": 4,
+                "num": 7,
+                "shiftX": 0,
+                "shiftY": -1
+            },
+            {
+                "node1": 4,
+                "node2": 5,
+                "num": 8,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 4,
+                "node2": 6,
+                "num": 9,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 5,
+                "node2": 6,
+                "num": 10,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 1,
+                "node2": 5,
+                "num": 11,
+                "shiftX": -1,
+                "shiftY": 0
+            },
+            {
+                "node1": 2,
+                "node2": 6,
+                "num": 12,
+                "shiftX": -1,
+                "shiftY": 0
+            }
+        ],
+        "nodes": [
+            {
+                "num": 1,
+                "x": 0.2,
+                "y": 0.22
+            },
+            {
+                "num": 2,
+                "x": 0.22,
+                "y": 0.58
+            },
+            {
+                "num": 3,
+                "x": 0.58,
+                "y": 0.22
+            },
+            {
+                "num": 4,
+                "x": 0.42,
+                "y": 0.78
+            },
+            {
+                "num": 5,
+                "x": 0.78,
+                "y": 0.42
+            },
+            {
+                "num": 6,
+                "x": 0.8,
+                "y": 0.78
+            }
+        ]
+    }
+}

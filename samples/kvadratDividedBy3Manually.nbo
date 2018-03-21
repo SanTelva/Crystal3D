@@ -1,0 +1,75 @@
+{
+    "geometry": {
+        "angle": 90,
+        "sideA": 300.0,
+        "sideB": 300.0
+    },
+    "topology": {
+        "bonds": [
+            {
+                "node1": 1,
+                "node2": 3,
+                "num": 1,
+                "shiftX": 0,
+                "shiftY": 1
+            },
+            {
+                "node1": 1,
+                "node2": 2,
+                "num": 2,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 2,
+                "node2": 3,
+                "num": 3,
+                "shiftX": 0,
+                "shiftY": 0
+            },
+            {
+                "node1": 1,
+                "node2": 4,
+                "num": 4,
+                "shiftX": -1,
+                "shiftY": 1
+            },
+            {
+                "node1": 2,
+                "node2": 4,
+                "num": 5,
+                "shiftX": -1,
+                "shiftY": 0
+            },
+            {
+                "node1": 3,
+                "node2": 4,
+                "num": 6,
+                "shiftX": 0,
+                "shiftY": 0
+            }
+        ],
+        "nodes": [
+            {
+                "num": 1,
+                "x": 0.1,
+                "y": 0.7666666666666666
+            },
+            {
+                "num": 2,
+                "x": 0.1,
+                "y": 0.4333333333333333
+            },
+            {
+                "num": 3,
+                "x": 0.4333333333333333,
+                "y": 0.1
+            },
+            {
+                "num": 4,
+                "x": 0.7666666666666666,
+                "y": 0.1
+            }
+        ]
+    }
+}

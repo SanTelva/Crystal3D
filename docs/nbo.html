@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="highlighter/atelier-heath.light.css">
+        <script src="highlighter/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <title>Кристаллы — NBO и NBO3D</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>NBO и NBO3D</h2>
+                    <p>
+                        Когда мы разрабатывали формат NBO, мы решали задачу построения покрывающей решётки. Возможно, это как-то на нём отразилось.<br>
+                        <h3>Внутреннее представление данных</h3>
+                        В программе формат NBO представлен тремя классами, находящимися в модуле <tt>nbolib</tt>. И первый из них это класс Node, обозначающий одну из точек элементарной ячейки. У него есть атрибуты <tt>num</tt>, <tt>x</tt>, <tt>y</tt>, опционально <tt>z</tt> и обязательно <tt>bonds</tt>.<br>
+                        Сигнатура конструктора Node: <tt>__init__(num, x, y, z, bonds)</tt>, причём z и bonds можно не задавать.<br>
+                        <tt>num</tt> — это номер точки. Он обязан быть уникальным, т.е. отличаться от любого другого номера точки в элементарной ячейке.<br>
+                        <tt>x</tt>, <tt>y</tt> и <tt>z</tt> — это долевые координаты точки (что это такое — поинтересуйтесь у руководителей. Если кратко, то это координаты относительно сторон элементарной ячейки).<br>
+                        <tt>bonds</tt> — это <tt>NBOSet</tt> (про него чуть позже) всех связей, в которых замешана точка.<br>
+                        Сама связь — это объект класса Bond. Он несколько сложнее. Его атрибуты таковы:<br>
+                        <tt>num</tt> — это, опять же, номер связи. Он обязан отличаться от всех номеров других связей элементарной ячейки и <b>не</b> обязан отличаться от номеров точек.<br>
+                        <tt>node1</tt> и <tt>node2</tt> — это <u>номера</u> нод на концах этого бонда. Сам ноды там не хранятся по каким-то очень важным историческим причинам.<br>
+                        <tt>shiftX</tt>, <tt>shiftY</tt> и опциональный <tt>shiftZ</tt> — это смещения ребра по трём осям.<br>
+                        Сигнатура конструктора такая: <tt>__init__(num, node1, node2, shiftX, shiftY, shiftZ)</tt>, причём <tt>shiftZ</tt> необязателен. Тут есть одна тонкость — в NBO принято, что <tt>node1</tt> &lt; <tt>node2</tt>, поэтому если это не так конструктор автоматически переставит <tt>node1</tt> и <tt>node2</tt> местами и инвертирует все шифты.<br>
+                        Всё это добро хранится в объекте класса <tt>NBOSet</tt> — самом сложном из тройки. У него довольно мало атрибутов, зато много методов. Сигнатура конструктора у него такая: <tt>__init__(key='num', array=[])</tt>. <tt>key</tt> — это название атрибута, по которому индексируется <tt>NBOSet</tt>. Для объектов классов <tt>Node</tt> и <tt>Bond</tt> его надо просто не менять. array — это список (или любой другой итерируемый объект, включая другой <tt>NBOSet</tt>), все элементы которого будут сразу добавлены в <tt>NBOSet</tt>.<br>
+                        У <tt>NBOSet</tt> два атрибута — <tt>key</tt> и <tt>data</tt>. Про <tt>key</tt> написано выше, а <tt>data</tt> — это внутренний массив, в котором, собственно, хранятся объекты. Тонкость такова — если задан объект с номером 2, но не задан объект с номером 1, то <tt>data</tt> будет содержать <tt>[None, obj]</tt>. Это сделано для удобной и быстрой индексации, и это так. По этой причине у <tt>NBOSet</tt> не определён <tt>len</tt>, так что если вы знаете что делаете — используйте <tt>len(NBOSet.data)</tt>.<br>
+                        Кроме методов получения объекта (<tt>NBOSet[num]</tt>), итерирования (<tt>for elem in NBOSet</tt>), приведения к строке (<tt>str(NBOSet)</tt>) и проверки существования элемента (<tt>obj in NBOSet</tt>), существует два метода обновления данных — <tt>append()</tt> и <tt>update</tt>.<br>
+                        Метод <tt>append(obj)</tt> добавляет переданный объект к хранимым данным. После его можно будет получить по его номеру. Скажем, если мы добавили <tt>Node</tt> с номером 2 в <tt>NBOSet</tt>, то получить его мы сможем вызвав <tt>NBOSet[2]</tt>.<br>
+                        Метод <tt>update(iterable)</tt> добавляет все элементы переданного аргумента (скажем, <tt>NBOSet</tt>'а или просто списка) к хранимым данным.<br>
+                        Любые два объекта одинакового типа (<tt>Node</tt>, <tt>Bond</tt> или <tt>NBOSet</tt>) можно сравнивать просто оператором ==.
+                        <h3>Формат файла</h3>
+                        Файлы формата NBO являются, по сути, файлами JSON с двумя большими разделами: geometry и topology. В разделе geometry содержатся данные о геометрии элементарной ячейки: три угла (angleA — между x и z, angleB — между x и y, angleG — между y и z) для трёхмерной ячейки и один (angle) для двумерной, а также длины сторон — sideA (длина "x"-стороны), sideB (длина "y"-стороны), и, для трёхмерных решёток, sideC (длина "z"-стороны).<br>
+                        В разделе topology содержится два списка — nodes и bonds, в которых перечислены, соответственно, точки и рёбра. Их структура напрямую соответствует структуре их объектов. Файл ниже описывает квадратную решётку, на картинке показана эта же решётка с подписями. Красным цветом показаны границы элементарной ячейки.
+                            <pre><code class="json"><!-- Sorry for indentation, but it is a pre tag. -->{
+    "geometry": {
+        "angle": 90,
+        "sideA": 300.0,
+        "sideB": 300.0
+    },
+    "topology": {
+        "bonds": [
+            {
+                "node1": 1,
+                "node2": 1,
+                "num": 1,
+                "shiftX": 0,
+                "shiftY": -1
+            },
+            {
+                "node1": 1,
+                "node2": 1,
+                "num": 2,
+                "shiftX": -1,
+                "shiftY": 0
+            }
+        ],
+        "nodes": [
+            {
+                "num": 1,
+                "x": 0.1,
+                "y": 0.1
+            }
+        ]
+    }
+}</code></pre>
+                        <img src="screen.png">
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

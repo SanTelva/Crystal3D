@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — Форматы</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>Форматы</h2>
+                    <p>
+                        Начать рассказ о форматах файлов и внутреннего представления данных следует с того, что их много: по меньшей мере три. Это получилось как-то так: мы моргнули, открываем глаза, а там хоп — и куча форматов. Мы вздохнули и принялись их поддерживать. Есть одна общая важная деталь — нумерация любых объектов во всех форматах данных идёт с единицы.<br>
+                        Первое, что надо знать — форматами IGOR пользоваться без необходимости не надо. Их разрабатывали не мы и там могут выскакивать неожиданные баги. На страницах про IGOR и IGOR3D мы постарались про них рассказать, но никто не в силах объять необъятное и что-то мы наверняка не учли. В директории Tools присутствует утилита <tt>migrate.py</tt>, которая позволяет легко и непринуждённо перейти с файлов IGOR на файлы NBO. К сожалению, с форматами внутреннего представления так просто не выйдет. Для написания новых утилит мы рекомендуем пользоваться функциями <tt>nboInput()</tt> и <tt>nboOutput()</tt>, находящимися в модуле <tt>nboio</tt>. Однако, если вам нужна так называемая <tt>IGOR's primitiveCell</tt>, используемая, например, в отрисовке графики, то вы всегда можете использовать функции <tt>myInput()</tt> и <tt>myOutput()</tt> из модуля <tt>oldio</tt>. Они также работают с форматом файлов NBO. Если же вам, по какой-то причине, хочется использовать формат файлов IGOR то вам нужны функции <tt>igorInput()</tt> и <tt>igorOutput()</tt> из <tt>_legacy.igorio</tt>. <b>Внимание!</b> Мы категорически не рекомендуем пользоваться чем-либо из модуля <tt>_legacy</tt>. Вся ответственность лежит исключительно на вас, нас ногами не бить.<br>
+                        Кроме форматов IGOR и NBO существует также формат CIGOR, который используется для решения задачи перколяции.<br>
+                        Узнать подробнее о каком-нибудь формате файлов и внутреннего представления данных вы можете из меню слева (оно слева).
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

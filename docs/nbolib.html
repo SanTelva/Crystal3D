@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — Модуль draw2.nbolib</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>Модуль draw2.nbolib</h2>
+                    <p>
+                        Этот модуль реализует систему внутреннего представления данных NBO. В нём есть три класса: <tt>Node</tt>, <tt>Bond</tt> и <tt>NBOSet</tt>, а также несколько функций для работы с ними. Про классы вы можете подробнее прочитать в разделе <a href="nbo.html">NBO и NBO3D</a>, здесь же расскажем о функциях.<br>
+                        Первое, что следует знать об этом модуле — в нём есть функции с суффиксами, т.е. кончающиеся на 2D или 3D. Если вы знаете, с каким типом данных работаете — с двумерным или трёхмерным — лучше используйте их. Если не знаете — вызовите функцию без суффикса и кидайте d20 на удачу. Список функций:<br>
+                        <tt>igorToNBO(primitiveCell) -> nodes, bonds</tt> — двумерная и трёхмерная функция одновременно. Лучше писать с суффиксом 2D или 3D. Переводит <tt>IGOR's primitiveCell</tt> в NBO. Возвращает два <tt>NBOSet</tt>'а — с точками и с рёбрами.<br>
+                        <tt>nboToIGOR(nodes, bonds, angle, a, b) -> primitiveCell</tt> — двумерная функция. Лучше писать с суффиксом 2D. Переводит <tt>nodes</tt> и <tt>bonds</tt> системы NBO в <tt>primitiveCell</tt>, содержащую и топологическую, и геометрическую информацию (подробнее в разделе <a href="igor.html">IGOR и IGOR3D</a>).<br>
+                        <tt>nboToIGOR(nodes, bonds, angle, a, b, c) -> primitiveCell</tt> — трёхмерная функция. Лучше писать с суффиксом 3D. Переводит <tt>nodes</tt> и <tt>bonds</tt> системы NBO в <tt>primitiveCell</tt>, содержащую и топологическую, и геометрическую информацию. Тонкий момент — <tt>angle</tt> это <tt>tuple</tt> из трёх элементов — <tt>angleA</tt>, <tt>angleB</tt> и <tt>angleG</tt>. Так исторически сложилось.<br>
+                        <tt>syncNBO(nodes, bonds) -> nodes, bonds</tt> — сверяет и обновляет информацию в <tt>nodes</tt> и <tt>bonds</tt>. К примеру, если в <tt>bonds</tt> было добавлено ребро, а у соответствующих точек данные не обновились, то <tt>syncNBO()</tt> их обновит.
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Кристаллы — Модуль draw2.nboio</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-column">
+                <ul class="menu">
+                    <li><a class="menuentry" href="index.html">Главная страница</a></li>
+                    <li><a class="menuentry" href="dictionary.html">Словарик</a></li>
+                    <li><a class="menuentry" href="formats.html">Форматы</a></li>
+                    <li><a class="menuentry level2" href="nbo.html">NBO и NBO3D</a></li> 
+                    <li><a class="menuentry level2" href="igor.html">IGOR и IGOR3D</a></li>
+                    <li><a class="menuentry level2" href="cigor.html">CIGOR</a></li>
+                    <li><a class="menuentry" href="modules.html">Модули</a></li>
+                    <li><a class="menuentry level2" href="evaluations.html">draw2.evaluations</a></li>
+                    <li><a class="menuentry level2" href="maths.html">draw2.maths</a></li>
+                    <li><a class="menuentry level2" href="graphics.html">draw2.graphics</a></li>
+                    <li><a class="menuentry level2" href="nbolib.html">draw2.nbolib</a></li>
+                    <li><a class="menuentry level2" href="nboio.html">draw2.nboio</a></li>
+                    <li><a class="menuentry level2" href="oldio.html">draw2.oldio</a></li>
+                    <li><a class="menuentry level2" href="legacy.html">draw2._legacy</a></li>
+                    <li><a class="menuentry" href="neonka.html">А что внутре? (READ ME)</a></li>
+                </ul> <!-- menu -->
+            </div> <!-- left-column -->
+            <div class="right-column">
+                <div class="content">
+                    <h2>Модуль draw2.nboio</h2>
+                    <p>
+                        Модуль для ввода и вывода данных в формате NBO. Первое, что следует знать об этом модуле — в нём есть функция <tt>nboOutput()</tt> с суффиксом, т.е. кончающиеся на 2D или 3D. Если вы знаете, с каким типом данных работаете — с двумерным или трёхмерным — лучше используйте их. Если не знаете — вызовите функцию без суффикса и кидайте d20 на удачу. Это небольшой модуль — в нём всего две функции (без учёта суффиксов):<br>
+                        <tt>nboInput(filename)</tt> — читает из файла NBO. Возвращает <tt>angle, a, b, nodes, bonds</tt> для двумерного файла или <tt>angleA, angleB, angleG, a, b, c, nodes, bonds</tt> для трёхмерного. <tt>angle</tt> — угол двумерной элементарной ячейки, <tt>angleA</tt>, <tt>angleB</tt> и <tt>angleG</tt> — углы трёхмерной. <tt>a</tt>, <tt>b</tt> и <tt>c</tt> — длины рёбер элементарной ячейки.<br>
+                        <tt>nboOutput(filename, angle, a, b, nodes, bonds)</tt> — двумерная функция. Лучше использовать с суффиксом 2D. Выводит данные в файл <tt>filename</tt>. Перед использованием убедитесь, что nodes и bonds синхронизированы (т.е. в них одинаковые данные).<br>
+                        <tt>nboOutput(filename, angle, a, b, c, nodes, bonds)</tt> — трёхмерная функция. Лучше использовать с суффиксом 3D. Выводит данные в файл filename. Тут есть одна тонкость — <tt>angle</tt> это <tt>tuple</tt> из трёх элементов — <tt>angleA</tt>, <tt>angleB</tt> и <tt>angleG</tt>.
+                    </p>
+                </div> <!-- column -->
+            </div> <!-- right-column -->
+        </div> <!-- container -->
+    </body>
+</html>
